@@ -23,7 +23,21 @@ const handleSubmit = function (event) {
   // update the data from local storage
 
   // set local storage with updated data
+
+  // render last registered user with local storage data
+};
+
+// on load event handler function
+const handleLoad = function () {
+  console.log("load");
+
+  // get data from local storage
+
+  // render last registered user with local storage data
 };
 
 // add event listener on form for submit event
 formElement.addEventListener("submit", handleSubmit);
+
+// add event listener for window load
+window.addEventListener("load, handleLoad");
