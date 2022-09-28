@@ -30,6 +30,7 @@ const getDataFromLocalStorage = function () {
 
 const renderError = function (errorMessage) {
   msgDiv.textContent = errorMessage;
+  msgDiv.style.visibility = "visible";
 };
 
 // on submit event handler function
@@ -58,6 +59,11 @@ const handleSubmit = function (event) {
     renderError("Please enter a valid password");
     return;
   }
+
+  // make msg div invisible
+  msgDiv.style.visibility = "hidden";
+  emailInput.value = "";
+  passwordInput.value = "";
 
   // update the data from local storage
 
