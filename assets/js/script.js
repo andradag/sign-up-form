@@ -12,7 +12,10 @@ const msgDiv = document.querySelector("#msg");
 const userEmailSpan = document.querySelector("#user-email");
 const userPasswordSpan = document.querySelector("#user-password");
 
-const renderLastRegisteredUser = function (lastRegisteredUser) {};
+const renderLastRegisteredUser = function (lastRegisteredUser) {
+  userEmailSpan.textContent = lastRegisteredUser.email;
+  userPasswordSpan.textContent = lastRegisteredUser.password;
+};
 
 const getDataFromLocalStorage = function () {
   // get data from Local Storage by key name
@@ -37,11 +40,8 @@ const renderError = function (errorMessage) {
 const handleSubmit = function (event) {
   event.preventDefault();
 
-  console.log("submit");
-
   // get data from local storage
   const lastRegisteredUser = getDataFromLocalStorage();
-  console.log(lastRegisteredUser);
 
   // get the user input values
   const email = emailInput.value;
@@ -66,8 +66,14 @@ const handleSubmit = function (event) {
   passwordInput.value = "";
 
   // update the data from local storage
+  lastRegisteredUser.email = email;
+  lastRegisteredUser.password = password;
 
   // set local storage with updated data
+  localStorage.setItem(
+    "lastRegisteredUser",
+    JSON.stringify(lastRegisteredUser)
+  );
 
   // render last registered user with local storage data
   renderLastRegisteredUser(lastRegisteredUser);
